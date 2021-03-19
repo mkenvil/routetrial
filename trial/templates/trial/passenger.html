@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+<!------ Include the above in your HEAD tag ---------->
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'trial/assets//style1.css' %}">
+</head>
+
+<body>
+{% block content %}
+  <!-- contact-section -->
+    <div class="contact-map-section">
+        <!-- contact-map -->
+        <div id="contact-map"></div>
+        <!-- /.contact-map -->
+        <!-- contact-info -->
+        <div class="contact-section ">
+            <div class="container ml-5">
+                <div class="row">
+                    <!-- contact-block -->
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 nopr nopl ">
+                        <div class="card contact-block">
+                            <div class="card-body">
+                                <h3 class="mb0">make a Reservation</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.contact-block -->
+                    <div class="col-xl-8 col-lg-8 col-md-6 col-sm-12 col-12 ">
+                    </div>
+                    <!-- contact-block -->
+                    <div class="col-xl-8 col-lg-8 col-md-6 col-sm-4 col-12 nopr nopl">
+                        <div class="card contact-block">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12 col-12 ">
+                                        <div class="contact-icon"><i class="fa fa-bus" aria-hidden="true"></i></div>
+                                    </div>
+                                    <div class="col-xl-12 col-lg-4 col-md-4 col-sm-12 col-12 ">
+                                        <h6 class="card-title">Available Matatus</h6>
+
+                                        <p class="contact-small-text" style = 'font:bold'>Location<span class="ml-5"> Destination </span>
+                                            <span class="ml-5"> Occupancy </span><span class="ml-5"> Plate </span><span class="ml-5"> DepartTime </span><span class="ml-5"> Price </span></p>
+                                        {% for availablematatu in availablematatu %}
+                                        <p class="contact-small-text">{{availablematatu.currentLocation}}<span class="ml-5">{{ availablematatu.destination }} </span><span class="ml-5"> {{availablematatu.FullOccupancy}} </span>
+                                            <span class="ml-5"> {{availablematatu.plate}} </span><span class="ml-5">{{ availablematatu.departureTime}}</span>{% endfor %}
+                                            {% for getprice in getprice %}
+                                            <span class="ml-5"> {{getprice.price}} </span>
+                                            {% endfor %}
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.contact-block -->
+                    <!-- contact-block -->
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-4 col-12 nopr nopl">
+                        <div class="card contact-block">
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 ">
+                                    <div class="contact-icon mt20"><i class="fa fa-map" aria-hidden="true"></i>
+</div>
+                                </div>
+                                <div class="col-xl-9 col-lg-9 col-md-6 col-sm-12 col-12 ">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Contact Info</h6>
+                                        <p class="contact-small-text">463 Lyon Avenueord, Us 01757</p>
+                                        <p class="contact-small-text">info@kitchen.com</p>
+                                        <p class="contact-small-text">+ 180 - 123 - 4567</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.contact-block -->
+
+                </div>
+
+            </div>
+        </div>
+        <!-- /.contact-info -->
+    </div>
+    <!-- /.contact-section -->
+    <div class="container mt-5">
+
+ <div class="row mt-5">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  text-center mt20">
+              Created for <a href="https://goo.gl/jpoZin" target="_blank">easetemplate</a>
+              </div></div>
+              </div>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <script>
+    function initMap() {
+        var uluru = {
+            lat: 23.094197,
+            lng: 72.558148
+        };
+        var map = new google.maps.Map(document.getElementById('contact-map'), {
+            zoom: 14,
+            center: uluru,
+            scrollwheel: false
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map,
+             icon: 'https://easetemplate.com/free-website-templates/kitchen/images/map_marker.png'
+
+        });
+    }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZib4Lvp0g1L8eskVBFJ0SEbnENB6cJ-g&callback=initMap">
+    </script>
+{% endblock %}
+</body>
+</html>
